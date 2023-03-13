@@ -10,7 +10,7 @@ export const NavContainer = styled.nav`
 
 export const NavLogo = styled.img`
   width: 100px;
-  height: 30px;
+  height: 28px;
 `
 export const NavButtonsContainer = styled.div`
   display: flex;

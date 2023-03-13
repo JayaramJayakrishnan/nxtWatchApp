@@ -1,7 +1,3 @@
-import {Component} from 'react'
-
-import {FaTwitter, FaLinkedinIn, FaFacebookF} from 'react-icons/fa'
-
 import NxtWatchContext from '../../context/NxtWatchContext'
 import SideBarTabItem from '../SideBarTabItem'
 import {
@@ -10,9 +6,7 @@ import {
   ContactUsSection,
   MediaLogoContainer,
   ListItem,
-  FacebookIconBg,
-  TwitterIconBg,
-  LinkedinIconBg,
+  MediaIcon,
   ContactUsSectionText,
 } from './StyledComponents'
 
@@ -41,61 +35,52 @@ const TabsList = [
   },
 ]
 
-class SideBar extends Component {
-  state = {activeTabId: TabsList[0].id}
-
-  changeActiveTab = id => {
-    this.setState({activeTabId: id})
-  }
-
-  render() {
-    return (
-      <NxtWatchContext.Consumer>
-        {value => {
-          const {darkTheme} = value
-          const {activeTabId} = this.state
-
-          return (
-            <SideBarContainer darkTheme={darkTheme}>
-              <ListItemsContainer>
-                {TabsList.map(item => (
-                  <SideBarTabItem
-                    tabDetails={item}
-                    key={item.id}
-                    isActive={activeTabId === item.id}
-                    changeActiveTab={this.changeActiveTab}
-                  />
-                ))}
-              </ListItemsContainer>
-              <ContactUsSection darkTheme={darkTheme}>
-                <p>CONTACT US</p>
-                <MediaLogoContainer>
-                  <ListItem>
-                    <FacebookIconBg>
-                      <FaFacebookF />
-                    </FacebookIconBg>
-                  </ListItem>
-                  <ListItem>
-                    <TwitterIconBg>
-                      <FaTwitter />
-                    </TwitterIconBg>
-                  </ListItem>
-                  <ListItem>
-                    <LinkedinIconBg>
-                      <FaLinkedinIn />
-                    </LinkedinIconBg>
-                  </ListItem>
-                </MediaLogoContainer>
-                <ContactUsSectionText darkTheme={darkTheme}>
-                  Enjoy! now to see your channels and recommendations!
-                </ContactUsSectionText>
-              </ContactUsSection>
-            </SideBarContainer>
-          )
-        }}
-      </NxtWatchContext.Consumer>
-    )
-  }
-}
+const SideBar = props => (
+  <NxtWatchContext.Consumer>
+    {value => {
+      const {darkTheme} = value
+      const {activeTabId} = props
+      return (
+        <SideBarContainer darkTheme={darkTheme}>
+          <ListItemsContainer>
+            {TabsList.map(item => (
+              <SideBarTabItem
+                tabDetails={item}
+                key={item.id}
+                isActive={activeTabId === item.id}
+              />
+            ))}
+          </ListItemsContainer>
+          <ContactUsSection darkTheme={darkTheme}>
+            <p>CONTACT US</p>
+            <MediaLogoContainer>
+              <ListItem>
+                <MediaIcon
+                  alt="facebook logo"
+                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
+                />
+              </ListItem>
+              <ListItem>
+                <MediaIcon
+                  alt="twitter logo"
+                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png"
+                />
+              </ListItem>
+              <ListItem>
+                <MediaIcon
+                  alt="linked in logo"
+                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png"
+                />
+              </ListItem>
+            </MediaLogoContainer>
+            <ContactUsSectionText darkTheme={darkTheme}>
+              Enjoy! now to see your channels and recommendations!
+            </ContactUsSectionText>
+          </ContactUsSection>
+        </SideBarContainer>
+      )
+    }}
+  </NxtWatchContext.Consumer>
+)
 
 export default SideBar

@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const SideBarContainer = styled.div`
   width: 18%;
+  flex-shrink: 0;
   background-color: ${props => (props.darkTheme ? '#212121' : '#ffffff')};
   display: flex;
   flex-direction: column;
@@ -33,24 +34,9 @@ export const ListItem = styled.div`
   align-items: center;
 `
 
-export const MediaIconBg = styled.div`
-  width: 29px;
-  height: 29px;
-  color: #ffffff;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+export const MediaIcon = styled.img`
+  width: 30px;
   margin-right: 10px;
-`
-export const FacebookIconBg = styled(MediaIconBg)`
-  background-color: #243f82;
-`
-export const TwitterIconBg = styled(MediaIconBg)`
-  background-color: #199ae0;
-`
-export const LinkedinIconBg = styled(MediaIconBg)`
-  background-color: #4495c7;
 `
 
 export const ContactUsSectionText = styled.p`

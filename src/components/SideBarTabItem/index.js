@@ -12,12 +12,8 @@ const SideBarTabItem = props => (
   <NxtWatchContext.Consumer>
     {value => {
       const {darkTheme} = value
-      const {tabDetails, isActive, changeActiveTab} = props
+      const {tabDetails, isActive} = props
       const {id, tabName, path} = tabDetails
-
-      const onClickTab = () => {
-        changeActiveTab(id)
-      }
 
       const renderIcons = () => {
         switch (id) {
@@ -35,18 +31,16 @@ const SideBarTabItem = props => (
       }
 
       return (
-        <Link to={path} className="link-styling">
-          <ListItem isActive={isActive} darkTheme={darkTheme}>
-            <Button
-              darkTheme={darkTheme}
-              isActive={isActive}
-              onClick={onClickTab}
-            >
+        <ListItem isActive={isActive} darkTheme={darkTheme}>
+          <Link to={path} className="link-styling">
+            <Button darkTheme={darkTheme} isActive={isActive}>
               {renderIcons()}
-              <TabLabel darkTheme={darkTheme}>{tabName}</TabLabel>
+              <TabLabel darkTheme={darkTheme} isActive={isActive}>
+                {tabName}
+              </TabLabel>
             </Button>
-          </ListItem>
-        </Link>
+          </Link>
+        </ListItem>
       )
     }}
   </NxtWatchContext.Consumer>

@@ -1,26 +1,21 @@
 import {Component} from 'react'
+
 import Cookie from 'js-cookie'
-import {BsSearch} from 'react-icons/bs'
+import {HiFire} from 'react-icons/hi'
 
 import {
   BgContainer,
   ContentsContainer,
+  TrendingBanner,
+  TrendingIconContainer,
+  TrendingHeading,
   VideoItemsContainer,
-  SearchContainer,
-  SearchInput,
-  SearchButton,
   UnorderedList,
-  ViewContainer,
-  ViewImage,
-  ViewHeading,
-  ViewText,
-  RetryButton,
 } from './StyledComponents'
 import NxtWatchContext from '../../context/NxtWatchContext'
 import Header from '../Header'
 import SideBar from '../SideBar'
-import Banner from '../Banner'
-import VideoItem from '../VideoItem'
+import TrendingVideoItem from '../TrendingVideoItem'
 import LoadingView from '../LoadingView'
 import FailureView from '../FailureView'
 
@@ -31,11 +26,10 @@ const apiCallStatusList = {
   failure: 'FAILURE',
 }
 
-class Home extends Component {
+class Trending extends Component {
   state = {
     videosList: [],
     apiCallStatus: apiCallStatusList.initial,
-    searchInput: '',
   }
 
   componentDidMount() {
@@ -44,9 +38,8 @@ class Home extends Component {
 
   getVideosList = async () => {
     this.setState({apiCallStatus: apiCallStatusList.inProgress})
-    const {searchInput} = this.state
     const jwtToken = Cookie.get('jwt_token')
-    const apiUrl = `https://apis.ccbp.in/videos/all?search=${searchInput}`
+    const apiUrl = `https://apis.ccbp.in/videos/trending`
     const options = {
       method: 'GET',
       headers: {
@@ -67,6 +60,7 @@ class Home extends Component {
         title: item.title,
         viewCount: item.view_count,
       }))
+
       this.setState({
         apiCallStatus: apiCallStatusList.success,
         videosList: updatedData,
@@ -76,55 +70,34 @@ class Home extends Component {
     }
   }
 
-  onChangeSearchInput = event => {
-    this.setState({searchInput: event.target.value})
-  }
-
-  onClickSearchIcon = () => {
-    this.getVideosList()
-  }
-
   onClickRetry = () => {
     this.getVideosList()
   }
 
-  renderVideosList = () => {
-    const {videosList} = this.state
+  renderVideosList = () => (
+    <NxtWatchContext.Consumer>
+      {value => {
+        const {darkTheme} = value
+        const {videosList} = this.state
 
-    if (videosList.length === 0) {
-      return (
-        <NxtWatchContext.Consumer>
-          {value => {
-            const {darkTheme} = value
-
-            return (
-              <ViewContainer>
-                <ViewImage
-                  alt="no videos"
-                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
-                />
-                <ViewHeading darkTheme={darkTheme}>
-                  No Search results found
-                </ViewHeading>
-                <ViewText>
-                  Try different key words or remove search filter
-                </ViewText>
-                <RetryButton onClick={this.onClickRetry}>Retry</RetryButton>
-              </ViewContainer>
-            )
-          }}
-        </NxtWatchContext.Consumer>
-      )
-    }
-
-    return (
-      <UnorderedList>
-        {videosList.map(item => (
-          <VideoItem videoDetails={item} key={item.id} />
-        ))}
-      </UnorderedList>
-    )
-  }
+        return (
+          <>
+            <TrendingBanner darkTheme={darkTheme}>
+              <TrendingIconContainer darkTheme={darkTheme}>
+                <HiFire />
+              </TrendingIconContainer>
+              <TrendingHeading darkTheme={darkTheme}>Trending</TrendingHeading>
+            </TrendingBanner>
+            <UnorderedList>
+              {videosList.map(item => (
+                <TrendingVideoItem videoDetails={item} key={item.id} />
+              ))}
+            </UnorderedList>
+          </>
+        )
+      }}
+    </NxtWatchContext.Consumer>
+  )
 
   switchViews = () => {
     const {apiCallStatus} = this.state
@@ -151,25 +124,8 @@ class Home extends Component {
             <BgContainer darkTheme={darkTheme}>
               <Header />
               <ContentsContainer>
-                <SideBar activeTabId="HOME" />
-                <VideoItemsContainer>
-                  <Banner />
-                  <SearchContainer darkTheme={darkTheme}>
-                    <SearchInput
-                      type="search"
-                      placeholder="Search"
-                      onChange={this.onChangeSearchInput}
-                    />
-                    <SearchButton
-                      type="button"
-                      darkTheme={darkTheme}
-                      onClick={this.onClickSearchIcon}
-                    >
-                      <BsSearch />
-                    </SearchButton>
-                  </SearchContainer>
-                  {this.switchViews()}
-                </VideoItemsContainer>
+                <SideBar activeTabId="TRENDING" />
+                <VideoItemsContainer>{this.switchViews()}</VideoItemsContainer>
               </ContentsContainer>
             </BgContainer>
           )
@@ -179,4 +135,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default Trending
