@@ -1,4 +1,4 @@
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 import Cookie from 'js-cookie'
 
 import {RiMoonFill} from 'react-icons/ri'
@@ -10,9 +10,9 @@ import {
   NavButtonsContainer,
   NavButton,
   ProfileIcon,
-  LogoutButton,
 } from './StyledComponents'
 import NxtWatchContext from '../../context/NxtWatchContext'
+import Logout from '../Logout'
 
 const Header = props => (
   <NxtWatchContext.Consumer>
@@ -32,20 +32,31 @@ const Header = props => (
 
       return (
         <NavContainer darkTheme={darkTheme}>
-          <NavLogo alt="nxt watch logo" src={logoUrl} />
+          <Link to="/">
+            <NavLogo alt="website logo" src={logoUrl} />
+          </Link>
           <NavButtonsContainer>
-            <NavButton onClick={changeTheme} darkTheme={darkTheme}>
-              {darkTheme ? <HiOutlineSun /> : <RiMoonFill />}
-            </NavButton>
-            <NavButton>
-              <ProfileIcon
-                alt="profile"
-                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
-              />
-            </NavButton>
-            <LogoutButton darkTheme={darkTheme} onClick={onClickLogout}>
-              Logout
-            </LogoutButton>
+            <li>
+              <NavButton
+                type="button"
+                onClick={changeTheme}
+                darkTheme={darkTheme}
+                data-testid="theme"
+              >
+                {darkTheme ? <HiOutlineSun /> : <RiMoonFill />}
+              </NavButton>
+            </li>
+            <li>
+              <NavButton type="button">
+                <ProfileIcon
+                  alt="profile"
+                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
+                />
+              </NavButton>
+            </li>
+            <li>
+              <Logout onClickLogout={onClickLogout} type="button" />
+            </li>
           </NavButtonsContainer>
         </NavContainer>
       )

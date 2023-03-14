@@ -44,7 +44,7 @@ export const VideoItemsContainer = styled.div`
   flex-direction: column;
   flex-grow: 1;
 `
-export const UnorderedList = styled.div`
+export const UnorderedList = styled.ul`
   list-style-type: none;
   padding: 0px;
   flex-grow: 1;

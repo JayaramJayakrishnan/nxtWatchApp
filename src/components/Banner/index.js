@@ -16,8 +16,12 @@ const Banner = () => (
       const {displayBanner, toggleBannerVisibility} = value
 
       return (
-        <BannerBg displayBanner={displayBanner}>
-          <CloseButton onClick={toggleBannerVisibility}>
+        <BannerBg
+          type="button"
+          displayBanner={displayBanner}
+          data-testid="banner"
+        >
+          <CloseButton onClick={toggleBannerVisibility} data-testid="close">
             <RiCloseFill />
           </CloseButton>
           <BannerContent>

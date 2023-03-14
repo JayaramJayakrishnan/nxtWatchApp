@@ -41,8 +41,8 @@ class VideoItemDetails extends Component {
   state = {
     videoDetails: {},
     apiCallStatus: apiCallStatusList.initial,
-    isLikeButtonActive: false,
-    isDislikeButtonActive: false,
+    isLiked: false,
+    isDisliked: false,
   }
 
   componentDidMount() {
@@ -93,15 +93,15 @@ class VideoItemDetails extends Component {
 
   onClickLike = () => {
     this.setState(prevState => ({
-      isLikeButtonActive: !prevState.isLikeButtonActive,
-      isDislikeButtonActive: false,
+      isLiked: !prevState.isLiked,
+      isDisliked: false,
     }))
   }
 
   onClickDislike = () => {
     this.setState(prevState => ({
-      isLikeButtonActive: false,
-      isDislikeButtonActive: !prevState.isDislikeButtonActive,
+      isLiked: false,
+      isDisliked: !prevState.isDisliked,
     }))
   }
 
@@ -124,7 +124,7 @@ class VideoItemDetails extends Component {
           viewCount,
         } = videoDetails
         const {name, profileImageUrl, subscriberCount} = channel
-        const {isLikeButtonActive, isDislikeButtonActive} = this.state
+        const {isLiked, isDisliked} = this.state
         const isSaved = savedVideos.find(item => item.id === id) !== undefined
         const onClickSave = () => {
           if (isSaved) {
@@ -150,7 +150,8 @@ class VideoItemDetails extends Component {
               <ReactionContainer>
                 <li>
                   <ReactionButton
-                    isActive={isLikeButtonActive}
+                    type="button"
+                    isActive={isLiked}
                     onClick={this.onClickLike}
                   >
                     <BiLike />
@@ -159,7 +160,8 @@ class VideoItemDetails extends Component {
                 </li>
                 <li>
                   <ReactionButton
-                    isActive={isDislikeButtonActive}
+                    type="button"
+                    isActive={isDisliked}
                     onClick={this.onClickDislike}
                   >
                     <BiDislike />
@@ -167,7 +169,11 @@ class VideoItemDetails extends Component {
                   </ReactionButton>
                 </li>
                 <li>
-                  <ReactionButton isActive={isSaved} onClick={onClickSave}>
+                  <ReactionButton
+                    type="button"
+                    isActive={isSaved}
+                    onClick={onClickSave}
+                  >
                     <BiListPlus />
                     <ReactionLabel>{SaveButtonText}</ReactionLabel>
                   </ReactionButton>
@@ -210,7 +216,7 @@ class VideoItemDetails extends Component {
         {value => {
           const {darkTheme} = value
           return (
-            <BgContainer darkTheme={darkTheme}>
+            <BgContainer darkTheme={darkTheme} data-testid="videoItemDetails">
               <Header />
               <ContentsContainer>
                 <SideBar />

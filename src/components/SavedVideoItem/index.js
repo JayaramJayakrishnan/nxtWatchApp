@@ -15,7 +15,7 @@ import {
   PublishedTime,
 } from './StyledComponents'
 
-const TrendingVideoItem = props => (
+const SavedVideoItem = props => (
   <NxtWatchContext.Consumer>
     {value => {
       const {darkTheme} = value
@@ -41,9 +41,9 @@ const TrendingVideoItem = props => (
                 <ChannelName darkTheme={darkTheme}>{name}</ChannelName>
                 <ViewsDateContainer>
                   <ViewCount>{`${viewCount} views`}</ViewCount>
-                  <PublishedTime>{`${formatDistanceToNowStrict(
-                    new Date(publishedAt),
-                  )} ago`}</PublishedTime>
+                  <PublishedTime>
+                    {`${formatDistanceToNowStrict(new Date(publishedAt))} ago`}
+                  </PublishedTime>
                 </ViewsDateContainer>
               </VideoDetails>
             </VideoDetailsContainer>
@@ -54,4 +54,4 @@ const TrendingVideoItem = props => (
   </NxtWatchContext.Consumer>
 )
 
-export default TrendingVideoItem
+export default SavedVideoItem

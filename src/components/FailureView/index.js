@@ -19,14 +19,13 @@ const FailureView = props => (
 
       return (
         <ViewContainer>
-          <ViewImage alt="failureView" src={imageUrl} />
+          <ViewImage alt="failure view" src={imageUrl} />
           <ViewHeading darkTheme={darkTheme}>
             Oops! Something Went Wrong
           </ViewHeading>
           <ViewText>
-            We are having some trouble to complete your request.
-            <br />
-            Please try again.
+            We are having some trouble to complete your request.Please try
+            again.
           </ViewText>
           <RetryButton onClick={onClickRetry}>Retry</RetryButton>
         </ViewContainer>

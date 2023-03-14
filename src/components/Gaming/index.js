@@ -77,7 +77,7 @@ class Gaming extends Component {
 
         return (
           <>
-            <GamingBanner darkTheme={darkTheme}>
+            <GamingBanner darkTheme={darkTheme} data-testid="banner">
               <GamingIconContainer darkTheme={darkTheme}>
                 <SiYoutubegaming />
               </GamingIconContainer>
@@ -116,7 +116,7 @@ class Gaming extends Component {
           const {darkTheme} = value
 
           return (
-            <BgContainer darkTheme={darkTheme}>
+            <BgContainer darkTheme={darkTheme} data-testid="gaming">
               <Header />
               <ContentsContainer>
                 <SideBar activeTabId="GAMING" />

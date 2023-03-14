@@ -33,7 +33,7 @@ const SideBarTabItem = props => (
       return (
         <ListItem isActive={isActive} darkTheme={darkTheme}>
           <Link to={path} className="link-styling">
-            <Button darkTheme={darkTheme} isActive={isActive}>
+            <Button type="button" darkTheme={darkTheme} isActive={isActive}>
               {renderIcons()}
               <TabLabel darkTheme={darkTheme} isActive={isActive}>
                 {tabName}

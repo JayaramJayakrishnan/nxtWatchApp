@@ -148,7 +148,7 @@ class Home extends Component {
           const {darkTheme} = value
 
           return (
-            <BgContainer darkTheme={darkTheme}>
+            <BgContainer darkTheme={darkTheme} data-testid="home">
               <Header />
               <ContentsContainer>
                 <SideBar activeTabId="HOME" />
@@ -164,6 +164,7 @@ class Home extends Component {
                       type="button"
                       darkTheme={darkTheme}
                       onClick={this.onClickSearchIcon}
+                      data-testid="searchButton"
                     >
                       <BsSearch />
                     </SearchButton>

@@ -74,7 +74,7 @@ const SideBar = props => (
               </ListItem>
             </MediaLogoContainer>
             <ContactUsSectionText darkTheme={darkTheme}>
-              Enjoy! now to see your channels and recommendations!
+              Enjoy! Now to see your channels and recommendations!
             </ContactUsSectionText>
           </ContactUsSection>
         </SideBarContainer>

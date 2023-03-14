@@ -12,7 +12,9 @@ export const NavLogo = styled.img`
   width: 100px;
   height: 28px;
 `
-export const NavButtonsContainer = styled.div`
+export const NavButtonsContainer = styled.ul`
+  list-style-type: none;
+  padding: 0px;
   display: flex;
   align-items: center;
 `

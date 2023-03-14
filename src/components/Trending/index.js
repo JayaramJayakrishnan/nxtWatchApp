@@ -82,7 +82,7 @@ class Trending extends Component {
 
         return (
           <>
-            <TrendingBanner darkTheme={darkTheme}>
+            <TrendingBanner darkTheme={darkTheme} data-testid="banner">
               <TrendingIconContainer darkTheme={darkTheme}>
                 <HiFire />
               </TrendingIconContainer>
@@ -121,7 +121,7 @@ class Trending extends Component {
           const {darkTheme} = value
 
           return (
-            <BgContainer darkTheme={darkTheme}>
+            <BgContainer darkTheme={darkTheme} data-testid="trending">
               <Header />
               <ContentsContainer>
                 <SideBar activeTabId="TRENDING" />

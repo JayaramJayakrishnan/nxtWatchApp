@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const ListItem = styled.div`
+export const ListItem = styled.li`
   width: 30%;
   margin-bottom: 60px;
 `

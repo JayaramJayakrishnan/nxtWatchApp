@@ -63,7 +63,7 @@ class Login extends Component {
       Cookie.set('jwt_token', jwtToken, {expires: 15})
       this.setState({showErrorMsg: false})
 
-      history.push('/')
+      history.replace('/')
     } else {
       const errorMsg = data.error_msg
       this.setState({showErrorMsg: true, errorMsg})
@@ -104,7 +104,7 @@ class Login extends Component {
                 onSubmit={this.onSubmitUserDetails}
                 darkTheme={darkTheme}
               >
-                <Logo alt="nxt watch logo" src={logoUrl} />
+                <Logo alt="website logo" src={logoUrl} />
                 <InputContainer>
                   <InputLabel htmlFor="username" darkTheme={darkTheme}>
                     USERNAME

@@ -49,7 +49,7 @@ export const SearchButton = styled.button`
   cursor: pointer;
 `
 
-export const UnorderedList = styled.div`
+export const UnorderedList = styled.ul`
   list-style-type: none;
   padding: 0px;
   flex-grow: 1;

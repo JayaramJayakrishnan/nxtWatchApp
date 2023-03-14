@@ -62,8 +62,8 @@ class App extends Component {
           <ProtectedRoute exact path="/trending" component={Trending} />
           <ProtectedRoute exact path="/gaming" component={Gaming} />
           <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
-          <ProtectedRoute exact path="/not-found" component={NotFound} />
-          <Redirect to="/not-found" />
+          <ProtectedRoute exact path="/bad-path" component={NotFound} />
+          <Redirect to="/bad-path" />
         </Switch>
       </NxtWatchContext.Provider>
     )

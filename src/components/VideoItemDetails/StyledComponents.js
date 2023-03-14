@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const BgContainer = styled.div`
   min-height: 100vh;
-  background-color: ${props => (props.darkTheme ? '#181818' : '#f9f9f9')};
+  background-color: ${props => (props.darkTheme ? '#0f0f0f' : '#f9f9f9')};
   display: flex;
   flex-direction: column;
 `
