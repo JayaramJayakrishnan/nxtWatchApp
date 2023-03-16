@@ -28,7 +28,7 @@ export const VideoTitle = styled.p`
   margin-bottom: 10px;
   margin-top: 0px;
 `
-export const ViewCount = styled.li`
+export const ViewCount = styled.p`
   font-family: 'Roboto';
   font-size: 15px;
   color: #64748b;

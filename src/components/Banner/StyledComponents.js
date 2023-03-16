@@ -4,7 +4,7 @@ export const BannerBg = styled.div`
   background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
   background-size: cover;
   background-position: left;
-  display: ${props => (props.displayBanner ? 'flex' : 'none')};
+  display: flex;
   flex-direction: column;
   padding: 30px;
 `

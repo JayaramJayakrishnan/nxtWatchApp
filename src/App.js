@@ -14,14 +14,10 @@ import NotFound from './components/NotFound'
 import './App.css'
 
 class App extends Component {
-  state = {darkTheme: false, displayBanner: true, savedVideos: []}
+  state = {darkTheme: false, savedVideos: []}
 
   changeTheme = () => {
     this.setState(prevState => ({darkTheme: !prevState.darkTheme}))
-  }
-
-  toggleBannerVisibility = () => {
-    this.setState(prevState => ({displayBanner: !prevState.displayBanner}))
   }
 
   saveVideo = videoDetails => {
@@ -37,13 +33,12 @@ class App extends Component {
   }
 
   render() {
-    const {darkTheme, displayBanner, savedVideos} = this.state
+    const {darkTheme, savedVideos} = this.state
 
     return (
       <NxtWatchContext.Provider
         value={{
           darkTheme,
-          displayBanner,
           savedVideos,
           saveVideo: this.saveVideo,
           removeSavedVideo: this.removeSavedVideo,
@@ -62,8 +57,8 @@ class App extends Component {
           <ProtectedRoute exact path="/trending" component={Trending} />
           <ProtectedRoute exact path="/gaming" component={Gaming} />
           <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
-          <ProtectedRoute exact path="/bad-path" component={NotFound} />
-          <Redirect to="/bad-path" />
+          <ProtectedRoute exact path="/not-found" component={NotFound} />
+          <Redirect to="/not-found" />
         </Switch>
       </NxtWatchContext.Provider>
     )

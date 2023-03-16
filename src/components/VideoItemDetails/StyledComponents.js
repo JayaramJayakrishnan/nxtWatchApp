@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {BiLike, BiDislike, BiListPlus} from 'react-icons/bi'
 
 export const BgContainer = styled.div`
   min-height: 100vh;
@@ -37,21 +38,28 @@ export const FlexContainer = styled.div`
   align-items: center;
 `
 
-export const ViewsDateContainer = styled.ul`
+export const ViewsDateContainer = styled.div`
   display: flex;
+  align-items: center;
   padding: 0px;
   margin: 20px 0px;
 `
 
-export const ViewCount = styled.li`
+export const ViewCount = styled.p`
   font-family: 'Roboto';
   font-size: 15px;
   color: #64748b;
   list-style-type: none;
-  margin-right: 12px;
+  margin-right: 10px;
+`
+export const Bullet = styled.div`
+  background-color: #64748b;
+  height: 5px;
+  width: 5px;
+  border-radius: 3px;
 `
 
-export const PublishedTime = styled.li`
+export const PublishedTime = styled.p`
   font-family: 'Roboto';
   font-size: 15px;
   color: #64748b;
@@ -61,6 +69,7 @@ export const ReactionContainer = styled.ul`
   list-style-type: none;
   padding: 0px;
   display: flex;
+  align-items: center;
   margin: 20px 0px;
 `
 
@@ -68,7 +77,7 @@ export const ReactionButton = styled.button`
   background-color: transparent;
   border-style: none;
   font-family: 'Roboto';
-  font-size: 20px;
+  font-size: 15px;
   color: ${props => (props.isActive ? '#2563eb' : '#64748b')};
   display: flex;
   justify-content: center;
@@ -76,6 +85,20 @@ export const ReactionButton = styled.button`
   padding: 0px;
   margin-left: 15px;
   cursor: pointer;
+`
+export const LikeIcon = styled(BiLike)`
+  font-size: 20px;
+  margin-right: 5px;
+`
+
+export const DislikeIcon = styled(BiDislike)`
+  font-size: 20px;
+  margin-right: 5px;
+`
+
+export const SaveIcon = styled(BiListPlus)`
+  font-size: 20px;
+  margin-right: 5px;
 `
 
 export const ReactionLabel = styled.p`

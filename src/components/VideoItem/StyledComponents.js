@@ -37,18 +37,25 @@ export const ChannelName = styled(VideoTitle)`
 
 export const ViewsDateContainer = styled.ul`
   display: flex;
+  align-items: center;
   padding: 0px;
   margin-top: 10px;
 `
-export const ViewCount = styled.li`
+export const ViewCount = styled.p`
   font-family: 'Roboto';
   font-size: 15px;
   color: #64748b;
   list-style-type: none;
-  margin-right: 12px;
+  margin-right: 10px;
+`
+export const Bullet = styled.div`
+  background-color: #64748b;
+  height: 5px;
+  width: 5px;
+  border-radius: 3px;
 `
 
-export const PublishedTime = styled.li`
+export const PublishedTime = styled.p`
   font-family: 'Roboto';
   font-size: 15px;
   color: #64748b;

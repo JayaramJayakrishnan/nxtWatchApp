@@ -2,7 +2,6 @@ import {Component} from 'react'
 import Cookie from 'js-cookie'
 import ReactPlayer from 'react-player'
 import {formatDistanceToNowStrict} from 'date-fns'
-import {BiLike, BiDislike, BiListPlus} from 'react-icons/bi'
 
 import {
   BgContainer,
@@ -15,12 +14,15 @@ import {
   ChannelName,
   ViewsDateContainer,
   ViewCount,
+  Bullet,
   PublishedTime,
   HorizontalLine,
   FlexContainer,
   ReactionContainer,
   ReactionButton,
-  ReactionLabel,
+  LikeIcon,
+  DislikeIcon,
+  SaveIcon,
   SubscriberCount,
   Description,
 } from './StyledComponents'
@@ -143,6 +145,7 @@ class VideoItemDetails extends Component {
             <FlexContainer>
               <ViewsDateContainer>
                 <ViewCount>{`${viewCount} views`}</ViewCount>
+                <Bullet />
                 <PublishedTime>
                   {`${formatDistanceToNowStrict(new Date(publishedAt))} ago`}
                 </PublishedTime>
@@ -154,8 +157,8 @@ class VideoItemDetails extends Component {
                     isActive={isLiked}
                     onClick={this.onClickLike}
                   >
-                    <BiLike />
-                    <ReactionLabel>Like</ReactionLabel>
+                    <LikeIcon />
+                    Like
                   </ReactionButton>
                 </li>
                 <li>
@@ -164,8 +167,8 @@ class VideoItemDetails extends Component {
                     isActive={isDisliked}
                     onClick={this.onClickDislike}
                   >
-                    <BiDislike />
-                    <ReactionLabel>Dislike</ReactionLabel>
+                    <DislikeIcon />
+                    Dislike
                   </ReactionButton>
                 </li>
                 <li>
@@ -174,8 +177,8 @@ class VideoItemDetails extends Component {
                     isActive={isSaved}
                     onClick={onClickSave}
                   >
-                    <BiListPlus />
-                    <ReactionLabel>{SaveButtonText}</ReactionLabel>
+                    <SaveIcon />
+                    {SaveButtonText}
                   </ReactionButton>
                 </li>
               </ReactionContainer>

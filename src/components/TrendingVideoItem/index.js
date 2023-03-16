@@ -12,6 +12,7 @@ import {
   ChannelName,
   ViewsDateContainer,
   ViewCount,
+  Bullet,
   PublishedTime,
 } from './StyledComponents'
 
@@ -41,6 +42,7 @@ const TrendingVideoItem = props => (
                 <ChannelName darkTheme={darkTheme}>{name}</ChannelName>
                 <ViewsDateContainer>
                   <ViewCount>{`${viewCount} views`}</ViewCount>
+                  <Bullet />
                   <PublishedTime>{`${formatDistanceToNowStrict(
                     new Date(publishedAt),
                   )} ago`}</PublishedTime>

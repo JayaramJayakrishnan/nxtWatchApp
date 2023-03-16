@@ -1,12 +1,13 @@
-import {Link} from 'react-router-dom'
-
-import {AiFillHome} from 'react-icons/ai'
-import {HiFire} from 'react-icons/hi'
-import {SiYoutubegaming} from 'react-icons/si'
-import {BiListPlus} from 'react-icons/bi'
 import NxtWatchContext from '../../context/NxtWatchContext'
 
-import {ListItem, Button, TabLabel} from './StyledComponents'
+import {
+  ListItem,
+  StyledLink,
+  HomeIcon,
+  TrendingIcon,
+  GamingIcon,
+  SavedVideosIcon,
+} from './StyledComponents'
 
 const SideBarTabItem = props => (
   <NxtWatchContext.Consumer>
@@ -18,13 +19,13 @@ const SideBarTabItem = props => (
       const renderIcons = () => {
         switch (id) {
           case 'HOME':
-            return <AiFillHome />
+            return <HomeIcon darkTheme={darkTheme} isActive={isActive} />
           case 'TRENDING':
-            return <HiFire />
+            return <TrendingIcon darkTheme={darkTheme} isActive={isActive} />
           case 'GAMING':
-            return <SiYoutubegaming />
+            return <GamingIcon darkTheme={darkTheme} isActive={isActive} />
           case 'SAVED VIDEOS':
-            return <BiListPlus />
+            return <SavedVideosIcon darkTheme={darkTheme} isActive={isActive} />
           default:
             return null
         }
@@ -32,14 +33,10 @@ const SideBarTabItem = props => (
 
       return (
         <ListItem isActive={isActive} darkTheme={darkTheme}>
-          <Link to={path} className="link-styling">
-            <Button type="button" darkTheme={darkTheme} isActive={isActive}>
-              {renderIcons()}
-              <TabLabel darkTheme={darkTheme} isActive={isActive}>
-                {tabName}
-              </TabLabel>
-            </Button>
-          </Link>
+          <StyledLink to={path} darkTheme={darkTheme} isActive={isActive}>
+            {renderIcons()}
+            {tabName}
+          </StyledLink>
         </ListItem>
       )
     }}

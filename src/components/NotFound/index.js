@@ -26,13 +26,13 @@ class NotFound extends Component {
               : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-light-theme-img.png'
 
             return (
-              <NotFoundViewContainer>
+              <>
                 <ViewImage alt="not found" src={imageUrl} />
                 <ViewHeading darkTheme={darkTheme}>Page Not Found</ViewHeading>
                 <ViewText>
                   We are sorry, the page you requested could not be found
                 </ViewText>
-              </NotFoundViewContainer>
+              </>
             )
           }
 

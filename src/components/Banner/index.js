@@ -1,3 +1,4 @@
+import {Component} from 'react'
 import {RiCloseFill} from 'react-icons/ri'
 
 import {
@@ -8,20 +9,25 @@ import {
   BannerText,
   Button,
 } from './StyledComponents'
-import NxtWatchContext from '../../context/NxtWatchContext'
 
-const Banner = () => (
-  <NxtWatchContext.Consumer>
-    {value => {
-      const {displayBanner, toggleBannerVisibility} = value
+class Banner extends Component {
+  state = {displayBanner: true}
 
-      return (
+  onClickClose = () => {
+    this.setState({displayBanner: false})
+  }
+
+  render() {
+    const {displayBanner} = this.state
+
+    return (
+      displayBanner && (
         <BannerBg
           type="button"
           displayBanner={displayBanner}
           data-testid="banner"
         >
-          <CloseButton onClick={toggleBannerVisibility} data-testid="close">
+          <CloseButton onClick={this.onClickClose} data-testid="close">
             <RiCloseFill />
           </CloseButton>
           <BannerContent>
@@ -36,8 +42,8 @@ const Banner = () => (
           </BannerContent>
         </BannerBg>
       )
-    }}
-  </NxtWatchContext.Consumer>
-)
+    )
+  }
+}
 
 export default Banner
